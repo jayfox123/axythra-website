@@ -1,0 +1,218 @@
+/* ============================================
+   AXYTHRA — NAVBAR
+   Edit only this file for navbar changes
+   ============================================ */
+
+/* --- Ticker Bar --- */
+.ticker-bar {
+  background-color: var(--color-accent-primary);
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 8px 0;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 4rem;
+  animation: ticker 30s linear infinite;
+}
+
+.ticker-track span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #0F172A;
+  flex-shrink: 0;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --- Main Navbar --- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-bg-primary);
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  transition: box-shadow var(--transition-base);
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+}
+
+.navbar-main {
+  padding: 0 1rem;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+/* --- Logo --- */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.navbar-logo img {
+  height: 40px;
+  width: auto;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Nav Links --- */
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.navbar-links a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+  letter-spacing: 0.02em;
+}
+
+.navbar-links a:hover {
+  color: var(--color-accent-primary);
+  opacity: 1;
+}
+
+/* --- Right Side --- */
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-enquiry {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-primary);
+  color: #0F172A;
+  text-decoration: none;
+  transition: opacity var(--transition-base);
+  letter-spacing: 0.02em;
+}
+
+.btn-enquiry:hover {
+  opacity: 0.85;
+}
+
+/* --- Hamburger Button --- */
+.hamburger {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: background var(--transition-base);
+}
+
+.hamburger:hover {
+  background: var(--color-bg-tertiary);
+}
+
+.hamburger span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+  transition: var(--transition-base);
+}
+
+/* --- Mobile Menu --- */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 280px;
+  height: 100vh;
+  background: var(--color-bg-secondary);
+  z-index: 2000;
+  padding: 2rem;
+  transition: right 0.4s cubic-bezier(0.6, 0.04, 0.12, 0.96);
+  border-left: 1px solid var(--color-bg-tertiary);
+}
+
+.mobile-menu.open {
+  right: 0;
+}
+
+.mobile-close {
+  background: none;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 20px;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mobile-links a {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+.mobile-links a:hover {
+  color: var(--color-accent-primary);
+}
+
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-base);
+}
+
+.mobile-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .navbar-links { display: none; }
+  .btn-enquiry { display: none; }
+}
