@@ -84,3 +84,68 @@ window.addEventListener('scroll', () => {
     }
   });
 });
+
+// --- Rocket Launch on form submit ---
+function launchRocket() {
+  const rocket = document.createElement('div');
+  rocket.innerHTML = '🚀';
+  rocket.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    z-index: 9999;
+    pointer-events: none;
+    animation: rocketLaunch 2s ease-in forwards;
+  `;
+  document.body.appendChild(rocket);
+
+  // Smoke particles
+  for (let i = 0; i < 20; i++) {
+    const smoke = document.createElement('div');
+    smoke.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      left: calc(50% + ${(Math.random() - 0.5) * 60}px);
+      width: ${Math.random() * 12 + 6}px;
+      height: ${Math.random() * 12 + 6}px;
+      background: radial-gradient(circle, rgba(56,189,248,0.8), rgba(129,140,248,0.4));
+      border-radius: 50%;
+      z-index: 9998;
+      pointer-events: none;
+      animation: smokeSpread ${Math.random() * 1.5 + 0.5}s ease-out forwards;
+      animation-delay: ${Math.random() * 0.3}s;
+    `;
+    document.body.appendChild(smoke);
+    setTimeout(() => smoke.remove(), 2000);
+  }
+
+  // Stars burst
+  for (let i = 0; i < 30; i++) {
+    const star = document.createElement('div');
+    star.innerHTML = ['⭐', '✨', '💫'][Math.floor(Math.random() * 3)];
+    star.style.cssText = `
+      position: fixed;
+      bottom: 60px;
+      left: calc(50% + ${(Math.random() - 0.5) * 200}px);
+      font-size: ${Math.random() * 1.2 + 0.6}rem;
+      z-index: 9999;
+      pointer-events: none;
+      animation: starBurst ${Math.random() * 1.5 + 0.8}s ease-out forwards;
+      animation-delay: ${Math.random() * 0.5}s;
+    `;
+    document.body.appendChild(star);
+    setTimeout(() => star.remove(), 2500);
+  }
+
+  setTimeout(() => rocket.remove(), 2500);
+}
+
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', () => {
+    launchRocket();
+    // No e.preventDefault() — form submits normally to Web3Forms!
+  });
+}
