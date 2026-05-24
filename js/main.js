@@ -145,7 +145,8 @@ function launchRocket() {
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', () => {
-    launchRocket();
-    // No e.preventDefault() — form submits normally to Web3Forms!
+    setTimeout(() => {
+      launchRocket();
+    }, 800);
   });
 }
