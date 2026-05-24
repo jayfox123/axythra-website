@@ -1,0 +1,149 @@
+/* ============================================
+   AXYTHRA — SERVICES SECTION
+   Edit only this file for services changes
+   ============================================ */
+
+.services {
+  padding: var(--space-xl) 0;
+  background: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+/* --- Scrolling Marquee --- */
+.services-marquee {
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 1rem 0;
+  border-top: 1px solid var(--color-bg-tertiary);
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  margin-bottom: 5rem;
+}
+
+.services-marquee-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 2rem;
+  animation: marquee 25s linear infinite;
+}
+
+.services-marquee-track span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+  transition: color var(--transition-base);
+}
+
+.services-marquee-track span:hover {
+  color: var(--color-accent-primary);
+}
+
+/* --- Section Header --- */
+.services-header {
+  margin-bottom: 3rem;
+  max-width: 600px;
+}
+
+.services-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  margin-top: 1rem;
+}
+
+/* --- Services Grid --- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* --- Service Card --- */
+.service-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.service-card:hover {
+  border-color: var(--color-accent-secondary);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+/* --- Service Icon --- */
+.service-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+  display: block;
+}
+
+/* --- Service Title --- */
+.service-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+/* --- Service Description --- */
+.service-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Service Tags --- */
+.service-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.service-tags span {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(129, 140, 248, 0.1);
+  color: var(--color-accent-secondary);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  letter-spacing: 0.03em;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}

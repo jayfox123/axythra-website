@@ -1,0 +1,163 @@
+/* ============================================
+   AXYTHRA — CASE STUDIES SECTION
+   Edit only this file for case study changes
+   ============================================ */
+
+.casestudies {
+  padding: var(--space-xl) 0;
+  background: var(--color-bg-primary);
+  overflow: hidden;
+}
+
+/* --- Header --- */
+.casestudies-header {
+  margin-bottom: 2.5rem;
+}
+
+.casestudies-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.casestudies-heading {
+  font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--color-text-primary);
+  max-width: 500px;
+}
+
+/* --- Swiper Controls --- */
+.swiper-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.swiper-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-btn:hover {
+  background: var(--color-accent-primary);
+  color: #0F172A;
+  border-color: var(--color-accent-primary);
+}
+
+/* --- Swiper --- */
+.casestudies-swiper {
+  padding: 0 calc((100vw - 1200px) / 2) !important;
+  padding-right: 2rem !important;
+  overflow: visible !important;
+}
+
+/* --- Case Study Card --- */
+.cs-card {
+  border-radius: var(--radius-md);
+  min-height: 420px;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-bg-tertiary);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.cs-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
+}
+
+.cs-card-inner {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+.cs-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* --- Card Tag --- */
+.cs-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1rem;
+}
+
+/* --- Card Title --- */
+.cs-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* --- Card Stats --- */
+.cs-stats {
+  display: flex;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.cs-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cs-stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cs-stat-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  .casestudies-swiper {
+    padding: 0 1rem !important;
+  }
+
+  .casestudies-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+}

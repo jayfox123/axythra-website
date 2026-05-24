@@ -1,0 +1,99 @@
+/* ============================================
+   AXYTHRA — POLISH & GLOBAL FIXES
+   Final touches across all sections
+   ============================================ */
+
+/* --- Smooth scroll offset for sticky navbar --- */
+html {
+  scroll-padding-top: 100px;
+}
+
+/* --- Selection color --- */
+::selection {
+  background: rgba(56, 189, 248, 0.3);
+  color: var(--color-text-primary);
+}
+
+/* --- Scrollbar styling --- */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-bg-tertiary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-secondary);
+}
+
+/* --- Global section spacing fix --- */
+section {
+  position: relative;
+}
+
+/* --- Gradient text utility --- */
+.gradient-text {
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* --- Page loading fade in --- */
+body {
+  animation: pageFadeIn 0.5s ease forwards;
+}
+
+@keyframes pageFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Active nav link --- */
+.navbar-links a.active {
+  color: var(--color-accent-primary);
+}
+
+/* --- Focus styles for accessibility --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+}
+
+/* --- Mobile global fixes --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 1.8rem; }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+  }
+}
+
+/* --- Tablet fixes --- */
+@media (max-width: 1024px) {
+  :root {
+    --space-xl: 5rem;
+    --space-lg: 3rem;
+  }
+}
