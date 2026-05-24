@@ -66,19 +66,15 @@ const csSwiper = new Swiper('.casestudies-swiper', {
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
     const btn = contactForm.querySelector('.btn-submit');
-    btn.textContent = '✅ Message Sent!';
-    btn.style.background = '#22c55e';
+    btn.textContent = '⏳ Sending...';
+    btn.style.opacity = '0.7';
 
-    // Confetti!
+    // Launch confetti
     launchConfetti();
 
-    setTimeout(() => {
-      btn.textContent = 'Send Message →';
-      btn.style.background = '';
-      contactForm.reset();
-    }, 3000);
+    // Let the form submit naturally to Web3Forms
+    // DO NOT call e.preventDefault()
   });
 }
 
