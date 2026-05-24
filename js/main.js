@@ -144,9 +144,13 @@ function launchRocket() {
 
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-  contactForm.addEventListener('submit', () => {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
     setTimeout(() => {
       launchRocket();
-    }, 800);
+    }, 300);
+    setTimeout(() => {
+      contactForm.submit();
+    }, 2500);
   });
 }
