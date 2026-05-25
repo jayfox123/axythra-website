@@ -312,14 +312,16 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .tool-logo {
-  height: 36px;
+  height: 28px;
   width: auto;
   opacity: 1;
   transition: opacity var(--transition-base);
+  flex-shrink: 0;
 }
 
 .tool-logo:hover {
