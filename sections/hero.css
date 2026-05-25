@@ -19,6 +19,7 @@
   inset: 0;
   pointer-events: none;
   overflow: hidden;
+  z-index: 2;
 }
 
 .shape {
@@ -290,4 +291,38 @@
   inset: 0;
   z-index: 1;
   pointer-events: none;
+}
+
+/* --- Tools Strip --- */
+.hero-tools {
+  opacity: 0;
+  animation: revealUp 0.8s cubic-bezier(0.6, 0.04, 0.12, 0.96) 1.4s forwards;
+}
+
+.hero-tools-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+.hero-tools-logos {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.tool-logo {
+  height: 28px;
+  width: auto;
+  opacity: 0.5;
+  filter: brightness(0) invert(1);
+  transition: opacity var(--transition-base);
+}
+
+.tool-logo:hover {
+  opacity: 1;
 }
