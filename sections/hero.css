@@ -311,7 +311,7 @@
 .hero-tools-logos {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
   flex-wrap: nowrap;
   overflow: hidden;
 }
