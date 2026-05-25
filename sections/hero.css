@@ -322,6 +322,7 @@
   opacity: 1;
   transition: opacity var(--transition-base);
   flex-shrink: 0;
+  mix-blend-mode: lighten;
 }
 
 .tool-logo:hover {
