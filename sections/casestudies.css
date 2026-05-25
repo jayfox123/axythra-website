@@ -161,3 +161,10 @@
     gap: 1.5rem;
   }
 }
+
+/* --- Card Icon --- */
+.cs-icon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
