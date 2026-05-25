@@ -313,7 +313,7 @@
   align-items: center;
   gap: 1.2rem;
   flex-wrap: nowrap;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .tool-logo {
