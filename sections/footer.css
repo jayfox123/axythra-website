@@ -10,8 +10,8 @@
 
 /* --- Top Footer --- */
 .footer-top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr 1fr !important;
   gap: 3rem;
   padding: 5rem 0 4rem;
 }
