@@ -1,0 +1,153 @@
+/* ============================================================
+   SESSION 7 (BRANDED) — css/leadform.css
+   Jay Orog — Axythra AI Automation
+   Updated to match Dark Navy Pro palette
+============================================================ */
+
+#lead-form-container {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 290px;
+  background: #1E293B;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5),
+              0 0 0 1px rgba(56, 189, 248, 0.05);
+  z-index: 9998;
+  padding: 18px;
+  box-sizing: border-box;
+  animation: form-slide-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes form-slide-in {
+  from { transform: translateY(-50%) translateX(20px); opacity: 0; }
+  to   { transform: translateY(-50%) translateX(0);    opacity: 1; }
+}
+
+.lf-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.lf-subheading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  color: #94A3B8;
+  margin: 0 0 14px 0;
+  line-height: 1.5;
+}
+
+.lf-field {
+  margin-bottom: 10px;
+}
+
+.lf-field label {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #94A3B8;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+}
+
+.lf-field input[type="text"],
+.lf-field input[type="email"],
+.lf-field select {
+  width: 100%;
+  padding: 8px 11px;
+  background: #0F172A;
+  border: 1px solid #334155;
+  border-radius: 7px;
+  color: #F8FAFC;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.lf-field select {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%2394A3B8' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 28px;
+}
+
+.lf-field select option {
+  background: #1E293B;
+  color: #F8FAFC;
+}
+
+.lf-field input:focus,
+.lf-field select:focus {
+  border-color: #38BDF8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.1);
+}
+
+.lf-field input::placeholder {
+  color: #475569;
+}
+
+.lf-error {
+  display: block;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.68rem;
+  color: #F472B6;
+  margin-top: 3px;
+  min-height: 14px;
+}
+
+.lf-btn-submit {
+  width: 100%;
+  padding: 10px;
+  margin-top: 4px;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  color: #0F172A;
+  border: none;
+  border-radius: 7px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  letter-spacing: 0.02em;
+}
+
+.lf-btn-submit:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.lf-btn-submit:active {
+  transform: translateY(0);
+}
+
+.lf-success-msg {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  color: #F8FAFC;
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 10px;
+  padding: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  #lead-form-container {
+    right: 12px;
+    left: 12px;
+    width: auto;
+  }
+}

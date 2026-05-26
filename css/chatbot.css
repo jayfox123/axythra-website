@@ -1,0 +1,269 @@
+/* ============================================================
+   SESSION 7 (BRANDED) — css/chatbot.css
+   Jay Orog — Axythra AI Automation
+   Brand: Dark Navy Pro + Space Grotesk
+   Updated: Session 7
+============================================================ */
+
+
+/* ============================================================
+   SECTION 1 — CSS VARIABLES (Axythra Brand Kit)
+   All brand colors in one place — edit here to update everything.
+============================================================ */
+:root {
+  /* Axythra Dark Navy Pro palette */
+  --brand-bg:         #0F172A;   /* page background               */
+  --brand-card:       #1E293B;   /* cards and surfaces            */
+  --brand-mid:        #334155;   /* borders and dividers          */
+  --brand-primary:    #38BDF8;   /* CTA buttons — cyan blue       */
+  --brand-highlight:  #818CF8;   /* highlights — violet           */
+  --brand-accent:     #C084FC;   /* accent — purple               */
+  --brand-text:       #F8FAFC;   /* primary text                  */
+  --brand-muted:      #94A3B8;   /* muted/secondary text          */
+
+  /* Legacy aliases used throughout the file */
+  --brand-dark:       #0F172A;
+  --brand-secondary:  #818CF8;
+  --white:            #F8FAFC;
+  --text-light:       #94A3B8;
+
+  /* Launcher button */
+  --launcher-size:    56px;
+  --launcher-bottom:  24px;
+  --launcher-right:   24px;
+
+  /* Font */
+  --font-main: 'Space Grotesk', sans-serif;
+}
+
+
+/* ============================================================
+   SECTION 2 — BASE RESET
+============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--brand-bg);
+  color: var(--brand-text);
+  min-height: 100vh;
+}
+
+
+/* ============================================================
+   SECTION 3 — DEMO PAGE LAYOUT
+   Replace this section in Session 8 with your real website.
+============================================================ */
+.demo-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.demo-hero {
+  text-align: center;
+  max-width: 700px;
+}
+
+/* Axythra logo above heading */
+.demo-logo {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 1.5rem auto;
+  display: block;
+  border-radius: 16px;
+}
+
+/* Main heading with brand gradient */
+.demo-hero h1 {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+/* Tagline */
+.demo-hero .tagline {
+  font-size: 0.95rem;
+  color: var(--brand-muted);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* Subtitle */
+.demo-hero p {
+  font-size: 1.05rem;
+  color: var(--brand-muted);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Thin divider line under heading */
+.demo-hero .brand-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #38BDF8, #C084FC);
+  margin: 0.8rem auto 1.8rem auto;
+  border-radius: 2px;
+}
+
+
+/* ============================================================
+   SECTION 4 — BUTTON GROUP
+============================================================ */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Base CTA button */
+.demo-cta {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  background: #38BDF8;
+  color: #0F172A;              /* dark text on cyan for contrast  */
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.88rem;
+  font-family: var(--font-main);
+  letter-spacing: 0.01em;
+  transition: background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.25);
+}
+
+.demo-cta:hover {
+  background: #7DD3FC;
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(56, 189, 248, 0.4);
+}
+
+.demo-cta:active {
+  transform: translateY(0);
+}
+
+/* Outline variant — Get in Touch */
+.demo-cta-outline {
+  background: transparent;
+  color: var(--brand-text);
+  border: 1.5px solid var(--brand-mid);
+  box-shadow: none;
+}
+
+.demo-cta-outline:hover {
+  background: var(--brand-card);
+  border-color: var(--brand-highlight);
+  color: var(--brand-text);
+  box-shadow: none;
+}
+
+/* Secondary filled variant — Get a Free Quote */
+.demo-cta-secondary {
+  background: var(--brand-highlight);
+  color: var(--brand-text);
+  box-shadow: 0 0 20px rgba(129, 140, 248, 0.25);
+}
+
+.demo-cta-secondary:hover {
+  background: #A5B4FC;
+  box-shadow: 0 0 28px rgba(129, 140, 248, 0.4);
+}
+
+
+/* ============================================================
+   SECTION 5 — CHAT LAUNCHER BUTTON
+============================================================ */
+#chat-launcher {
+  position: fixed;
+  bottom: var(--launcher-bottom);
+  right: var(--launcher-right);
+  width: var(--launcher-size);
+  height: var(--launcher-size);
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  z-index: 9999;
+  animation: launcher-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.8s both;
+}
+
+#chat-launcher:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 28px rgba(56, 189, 248, 0.5);
+}
+
+#chat-launcher:active {
+  transform: scale(0.96);
+}
+
+/* Launcher icon */
+#chat-launcher svg {
+  width: 26px;
+  height: 26px;
+  fill: #0F172A;
+}
+
+/* Notification dot */
+#chat-launcher .notif-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 12px;
+  height: 12px;
+  background: #F472B6;
+  border-radius: 50%;
+  border: 2px solid var(--brand-bg);
+  display: none;
+}
+
+#chat-launcher.has-notif .notif-dot {
+  display: block;
+  animation: pulse-dot 1.5s ease infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1);   opacity: 1; }
+  50%       { transform: scale(1.3); opacity: 0.7; }
+}
+
+@keyframes launcher-in {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+
+/* ============================================================
+   SECTION 6 — MOBILE
+============================================================ */
+@media (max-width: 600px) {
+  :root {
+    --launcher-bottom: 16px;
+    --launcher-right:  16px;
+    --launcher-size:   50px;
+  }
+
+  .demo-hero h1 {
+    font-size: 2rem;
+  }
+}
