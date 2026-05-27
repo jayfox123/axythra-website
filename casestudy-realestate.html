@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Case Study — Real Estate Lead Generation Automation | Axythra</title>
+<title>Case Study — Real Estate Lead Capture & Follow-Up Pipeline | Axythra</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -24,14 +24,12 @@
   --radius-pill: 999px;
   --transition: 0.3s cubic-bezier(0.6, 0.04, 0.12, 0.96);
 }
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 body { background: var(--color-bg-primary); color: var(--color-text-primary); font-family: var(--font-main); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
 .navbar { position: sticky; top: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-bg-tertiary); padding: 0 2rem; }
 .navbar-inner { max-width: 1100px; margin: 0 auto; height: 68px; display: flex; align-items: center; justify-content: space-between; }
 .navbar-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.logo-text { font-size: 18px; font-weight: 800; letter-spacing: 0.08em; background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .btn-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: var(--radius-pill); background: transparent; border: 1.5px solid var(--color-bg-tertiary); color: var(--color-text-secondary); font-size: 13px; font-weight: 600; text-decoration: none; transition: all var(--transition); }
 .btn-back:hover { border-color: var(--color-accent-primary); color: var(--color-accent-primary); }
 .hero { background: linear-gradient(135deg, #0F172A 0%, #0d1f35 100%); border-bottom: 1px solid var(--color-bg-tertiary); padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
@@ -44,9 +42,9 @@ body { background: var(--color-bg-primary); color: var(--color-text-primary); fo
 .hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
 .pill { font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-pill); background: rgba(129,140,248,0.1); color: var(--color-accent-secondary); border: 1px solid rgba(129,140,248,0.2); letter-spacing: 0.03em; }
 .pill.purple { background: rgba(192,132,252,0.1); color: var(--color-accent-tertiary); border-color: rgba(192,132,252,0.2); }
-.stat-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-bg-tertiary); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-bg-tertiary); }
+.stat-banner { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--color-bg-tertiary); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-bg-tertiary); }
 .stat-banner-item { background: var(--color-bg-secondary); padding: 1.5rem; text-align: center; }
-.stat-banner-num { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.25rem; }
+.stat-banner-num { font-size: 1.6rem; font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.25rem; }
 .stat-banner-label { font-size: 11px; color: var(--color-text-muted); font-weight: 500; letter-spacing: 0.04em; line-height: 1.4; }
 .content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
 .cs-section { margin-bottom: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--color-bg-tertiary); }
@@ -78,6 +76,8 @@ body { background: var(--color-bg-primary); color: var(--color-text-primary); fo
 .outcome-item:hover { border-color: var(--color-accent-secondary); transform: translateY(-3px); }
 .outcome-num { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
 .outcome-label { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; }
+.workflow-img { margin-top: 2rem; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-bg-tertiary); }
+.workflow-img img { width: 100%; display: block; }
 .testimonial { background: linear-gradient(135deg, #1E293B, #1a1040); border: 1px solid rgba(129,140,248,0.2); border-radius: var(--radius-md); padding: 2.5rem; margin-top: 2rem; position: relative; }
 .testimonial::before { content: '"'; position: absolute; top: -20px; left: 2rem; font-size: 5rem; font-weight: 900; background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
 .testimonial-text { font-size: 1.05rem; color: var(--color-text-primary); line-height: 1.8; font-style: italic; margin-bottom: 1.5rem; }
@@ -112,33 +112,40 @@ body { background: var(--color-bg-primary); color: var(--color-text-primary); fo
 
 <section class="hero">
   <div class="hero-inner">
-    <div class="hero-tag">Case Study · Lead Generation & CRM</div>
-    <h1>Real Estate Agency<br><span>Lead Generation Automation</span></h1>
-    <p class="hero-desc">A fully automated lead generation and CRM pipeline built for a Dubai-based real estate agency — from cold outreach to qualified booking, running 24/7 without a single manual step.</p>
+    <div class="hero-tag">Case Study · Lead Generation & Follow-Up Automation</div>
+    <h1>Real Estate Agent<br><span>Lead Capture & Follow-Up Pipeline</span></h1>
+    <p class="hero-desc">My friend was drowning in leads — and losing most of them. Inquiries coming from everywhere, no system to follow up, and deals going cold before he even had a chance to respond. We fixed that.</p>
     <div class="hero-tags">
-      <span class="pill">GoHighLevel</span>
-      <span class="pill">Apollo.io</span>
-      <span class="pill">Zapier</span>
-      <span class="pill purple">CRM Automation</span>
-      <span class="pill purple">Lead Generation</span>
-      <span class="pill purple">Pipeline Management</span>
+      <span class="pill">n8n</span>
+      <span class="pill">Tally.so</span>
+      <span class="pill">Google Gemini</span>
+      <span class="pill">Google Sheets</span>
+      <span class="pill">Slack</span>
+      <span class="pill">Gmail</span>
+      <span class="pill purple">Lead Automation</span>
+      <span class="pill purple">AI Lead Scoring</span>
+      <span class="pill purple">Follow-Up Sequences</span>
     </div>
     <div class="stat-banner">
       <div class="stat-banner-item">
-        <div class="stat-banner-num">3x</div>
-        <div class="stat-banner-label">More qualified leads per month</div>
+        <div class="stat-banner-num">3</div>
+        <div class="stat-banner-label">Lead sources unified</div>
       </div>
       <div class="stat-banner-item">
-        <div class="stat-banner-num">80%</div>
-        <div class="stat-banner-label">Reduction in manual follow-up time</div>
+        <div class="stat-banner-num">AI</div>
+        <div class="stat-banner-label">Lead scoring on every inquiry</div>
       </div>
       <div class="stat-banner-item">
-        <div class="stat-banner-num">48h</div>
-        <div class="stat-banner-label">From setup to first automated lead</div>
+        <div class="stat-banner-num">&lt;2min</div>
+        <div class="stat-banner-label">Instant response to every lead</div>
       </div>
       <div class="stat-banner-item">
-        <div class="stat-banner-num">200+</div>
-        <div class="stat-banner-label">Leads contacted per month automatically</div>
+        <div class="stat-banner-num">D2+D5</div>
+        <div class="stat-banner-label">Auto follow-up sequences</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">0</div>
+        <div class="stat-banner-label">Leads fall through the cracks</div>
       </div>
     </div>
   </div>
@@ -148,116 +155,122 @@ body { background: var(--color-bg-primary); color: var(--color-text-primary); fo
 
   <div class="cs-section">
     <div class="section-label">About the Client</div>
-    <h2>A growing real estate agency spending too much time chasing leads manually.</h2>
-    <p>The client is a mid-sized real estate agency based in Dubai with a team of 6 agents. They were generating leads through referrals and manual outreach — a slow, inconsistent process that left agents spending more time on prospecting than closing deals.</p>
+    <h2>A solo agent who was great at closing — just terrible at keeping up.</h2>
+    <p>He's a residential real estate agent based in the Philippines — solo operator, hustling hard, good at closing. The problem wasn't getting leads. It was keeping up with them. Inquiries were coming from his website, Facebook, and referrals all at once. He was copy-pasting into spreadsheets, forgetting to follow up, and watching hot leads go cold because life got busy. Sound familiar?</p>
     <div class="client-card">
-      <div class="client-icon">🏢</div>
+      <div class="client-icon">🏠</div>
       <div class="client-info">
-        <h3>Real Estate Agency — Dubai, UAE</h3>
-        <p>6 agents · Previously manual outreach only · 20–30 leads/month before automation · Goal: build a scalable, automated lead generation system that fills the pipeline without additional headcount.</p>
+        <h3>Residential Real Estate Agent — Philippines</h3>
+        <p>Solo operator · Leads from website, Facebook ads & referrals · No CRM, no follow-up system · Goal: catch every lead automatically and follow up without lifting a finger.</p>
       </div>
     </div>
   </div>
 
   <div class="cs-section">
     <div class="section-label">Problem</div>
-    <h2>Agents were spending 60% of their time on admin, not closing.</h2>
-    <p>Every lead required manual research, a manually written outreach email, and individual follow-up tracking in a shared spreadsheet. There was no CRM pipeline, no automated follow-up sequences, and no way to scale outreach without hiring more staff.</p>
-    <p>Leads were falling through the cracks. Follow-ups were inconsistent. The agency was leaving money on the table every single week.</p>
+    <h2>Too many leads, zero system. Deals were disappearing.</h2>
+    <p>He'd get an inquiry on Facebook at 9pm, mean to reply in the morning, and by then the person had already talked to another agent. Or he'd forget who he already contacted. Or a lead would say "follow up next week" and that note would live in his head — until it didn't.</p>
+    <p>The leads were there. The deals were there. The system wasn't.</p>
   </div>
 
   <div class="cs-section">
     <div class="section-label">Solution</div>
-    <h2>A three-layer automation stack: find, contact, and nurture — automatically.</h2>
-    <p>Axythra built a full lead generation pipeline connecting Apollo.io for prospect discovery, Zapier for workflow orchestration, and GoHighLevel as the CRM and follow-up engine. The system finds qualified leads daily, enriches their data, adds them to a drip sequence, and moves them through the pipeline based on their responses — with zero manual input from the team.</p>
-    <p>Agents now only touch leads that have already expressed interest. Everything upstream is handled automatically.</p>
+    <h2>One pipeline that catches every lead — no matter where it comes from.</h2>
+    <p>We built him a single n8n automation that pulls leads from three sources: his website form (Tally), Facebook ads, and manual/referral webhooks. Every lead goes through the same pipeline — normalized, AI-scored by Google Gemini, logged to Google Sheets, and instantly pinged to him on Slack.</p>
+    <p>Then the follow-up kicks in automatically. An instant response email goes out within minutes. If they don't reply — Day 2 follow-up. Still nothing — Day 5. He doesn't have to remember anything anymore. The system remembers for him.</p>
+
+    <div class="workflow-img">
+      <img src="images/workflow-realestate.png" alt="n8n Real Estate Lead Pipeline Workflow" />
+    </div>
   </div>
 
   <div class="cs-section">
     <div class="section-label">Tools Used</div>
-    <h2>Three powerful tools. One seamless pipeline.</h2>
+    <h2>Simple stack. Powerful results.</h2>
     <div class="tools-grid">
-      <div class="tool-item">🎯 Apollo.io</div>
-      <div class="tool-item">🔗 Zapier</div>
-      <div class="tool-item">🚀 GoHighLevel</div>
-      <div class="tool-item">📧 Email Sequences</div>
-      <div class="tool-item">📊 CRM Pipeline</div>
-      <div class="tool-item">🤖 AI Personalization</div>
+      <div class="tool-item">⚡ n8n</div>
+      <div class="tool-item">📋 Tally.so</div>
+      <div class="tool-item">🤖 Google Gemini</div>
+      <div class="tool-item">📊 Google Sheets</div>
+      <div class="tool-item">💬 Slack</div>
+      <div class="tool-item">📧 Gmail</div>
+      <div class="tool-item">🔗 Webhook</div>
     </div>
   </div>
 
   <div class="cs-section">
     <div class="section-label">Key Features</div>
-    <h2>From prospect to pipeline — fully automated.</h2>
+    <h2>Every lead caught. Every follow-up sent. Zero manual work.</h2>
     <ul class="features">
-      <li><div class="feature-dot"></div>Apollo.io scrapes and filters qualified real estate investor leads daily based on custom criteria</li>
-      <li><div class="feature-dot"></div>Zapier automatically pushes new leads into GoHighLevel CRM with full contact details</li>
-      <li><div class="feature-dot"></div>AI-personalized outreach emails sent automatically within minutes of lead entry</li>
-      <li><div class="feature-dot"></div>Multi-step follow-up sequences trigger based on open rates, clicks, and reply behavior</li>
-      <li><div class="feature-dot"></div>Leads that reply or click are automatically flagged and assigned to an agent in GHL</li>
-      <li><div class="feature-dot"></div>Pipeline stages update automatically based on lead actions — no manual CRM updates needed</li>
-      <li><div class="feature-dot"></div>Weekly performance report sent automatically to the agency owner every Monday morning</li>
+      <li><div class="feature-dot"></div>3 lead sources (Tally form, Facebook ads, manual webhook) all flow into one unified pipeline</li>
+      <li><div class="feature-dot"></div>Normalize nodes clean and standardize lead data regardless of which source it came from</li>
+      <li><div class="feature-dot"></div>Google Gemini AI scores each lead and assesses quality before it reaches the agent</li>
+      <li><div class="feature-dot"></div>Google Sheets CRM updated automatically — new leads added, existing leads updated, no duplicates</li>
+      <li><div class="feature-dot"></div>Slack alert sent instantly so the agent always knows the moment a new lead comes in</li>
+      <li><div class="feature-dot"></div>Instant Gmail response sent to the lead within minutes of their inquiry</li>
+      <li><div class="feature-dot"></div>Automated Day 2 and Day 5 follow-up emails if the lead hasn't replied</li>
+      <li><div class="feature-dot"></div>Error trigger alerts the agent via Slack if anything in the workflow fails</li>
     </ul>
   </div>
 
   <div class="cs-section">
     <div class="section-label">Challenges & Problem-Solving</div>
-    <h2>Personalization at scale — without it feeling robotic.</h2>
+    <h2>Three different lead sources. Three different data formats. One clean pipeline.</h2>
 
     <div class="challenge-block">
       <div class="ch-label">The Challenge</div>
-      <h3>Generic outreach emails had extremely low reply rates</h3>
-      <p>Initial test sequences using templated emails achieved less than 2% reply rates. Leads could tell the emails were automated. The system was working technically, but not converting.</p>
+      <h3>Each lead source sent data in a completely different format</h3>
+      <p>Tally sends structured field arrays. Facebook lead ads send flat JSON. Manual referral webhooks had no consistent structure at all. Trying to run them through the same pipeline was breaking everything downstream.</p>
     </div>
 
     <div class="challenge-block warning">
       <div class="ch-label">Root Cause</div>
-      <h3>No personalization layer in the outreach copy</h3>
-      <p>Every lead was receiving the exact same email with only their first name swapped. For high-value real estate prospects, this level of personalization wasn't enough to stand out in a crowded inbox.</p>
+      <h3>No normalization layer between sources and the main pipeline</h3>
+      <p>Without a dedicated normalization step for each source, the AI scoring node and Google Sheets upsert were receiving inconsistent field names and data types — causing errors and missed entries.</p>
     </div>
 
     <div class="challenge-block success">
       <div class="ch-label">Resolution</div>
-      <h3>AI-powered personalization node added to the Zapier workflow</h3>
-      <p>An AI step was added to the Zapier workflow that pulls the lead's company, recent activity, and location from Apollo, then generates a personalized opening line for each email. Reply rates increased from under 2% to over 8% within two weeks of the change.</p>
+      <h3>Separate normalize nodes for each source, feeding one unified schema</h3>
+      <p>Each lead source got its own dedicated Set node to normalize the data into a consistent schema before anything else runs. Once normalized, every lead looks identical to the rest of the pipeline — regardless of where it came from. Clean data in, clean data out.</p>
     </div>
   </div>
 
   <div class="cs-section">
     <div class="section-label">Outcome</div>
-    <h2>A predictable, scalable lead machine — running 24/7.</h2>
-    <p>The agency went from 20–30 manual leads per month to 200+ automated contacts per month, with agents only spending time on leads that had already shown interest. Pipeline revenue increased significantly in the first quarter after launch.</p>
+    <h2>No more cold leads. No more forgotten follow-ups. Just closed deals.</h2>
+    <p>Every lead that comes in now gets an instant response, gets scored by AI, gets logged to his CRM, and gets followed up automatically if they go quiet. He checks Slack, sees who's interested, and focuses entirely on closing. That's it.</p>
 
     <div class="outcome-grid">
       <div class="outcome-item">
-        <div class="outcome-num">3x</div>
-        <div class="outcome-label">More qualified leads entering the pipeline every month</div>
+        <div class="outcome-num">3</div>
+        <div class="outcome-label">Lead sources connected into one unified automated pipeline</div>
       </div>
       <div class="outcome-item">
-        <div class="outcome-num">80%</div>
-        <div class="outcome-label">Reduction in time agents spend on prospecting tasks</div>
+        <div class="outcome-num">&lt;2min</div>
+        <div class="outcome-label">Average response time to every new lead inquiry</div>
       </div>
       <div class="outcome-item">
-        <div class="outcome-num">8%+</div>
-        <div class="outcome-label">Reply rate after AI personalization was added</div>
+        <div class="outcome-num">100%</div>
+        <div class="outcome-label">Of leads followed up automatically — nothing slips through</div>
       </div>
       <div class="outcome-item">
-        <div class="outcome-num">200+</div>
-        <div class="outcome-label">Leads automatically contacted every single month</div>
+        <div class="outcome-num">0</div>
+        <div class="outcome-label">Manual steps required after a lead submits their inquiry</div>
       </div>
     </div>
   </div>
 
   <div class="cs-section">
     <div class="section-label">Client Feedback</div>
-    <h2>What the client said.</h2>
+    <h2>What he said.</h2>
     <div class="testimonial">
-      <p class="testimonial-text">Before this, my agents were spending half their day just finding and emailing people. Now they wake up and there are already interested leads waiting in GHL. It's a completely different operation. I wish we had done this two years ago honestly.</p>
+      <p class="testimonial-text">Bro honestly — I used to stress every night thinking about who I forgot to follow up with. Now I just check Slack and everything's already moving. I closed two deals last month from leads I would've definitely ghosted before. This thing pays for itself.</p>
       <div class="testimonial-author">
-        <div class="author-avatar">S</div>
+        <div class="author-avatar">R</div>
         <div>
-          <div class="author-name">Sarah K.</div>
-          <div class="author-title">Agency Director · Real Estate · Dubai, UAE</div>
+          <div class="author-name">Real Estate Agent</div>
+          <div class="author-title">Residential Properties · Metro Manila, Philippines</div>
         </div>
       </div>
     </div>
@@ -272,7 +285,7 @@ body { background: var(--color-bg-primary); color: var(--color-text-primary); fo
 </div>
 
 <footer class="footer">
-  <p>Built by <a href="index.html">Axythra</a> · GoHighLevel · Apollo.io · Zapier &nbsp;·&nbsp; <a href="https://storyset.com/fun" target="_blank">Illustrations by Storyset</a></p>
+  <p>Built by <a href="index.html">Axythra</a> · n8n · Google Gemini · Google Sheets · Slack · Gmail &nbsp;·&nbsp; <a href="https://storyset.com/fun" target="_blank">Illustrations by Storyset</a></p>
 </footer>
 
 </body>
