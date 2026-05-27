@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Online Fitness Coach Booking Automation | Axythra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-bg-primary:    #0F172A;
+  --color-bg-secondary:  #1E293B;
+  --color-bg-tertiary:   #334155;
+  --color-accent-primary:   #38BDF8;
+  --color-accent-secondary: #818CF8;
+  --color-accent-tertiary:  #C084FC;
+  --color-text-primary:   #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted:     #475569;
+  --font-main: 'Inter', sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --transition: 0.3s cubic-bezier(0.6, 0.04, 0.12, 0.96);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  padding: 0 2rem;
+}
+
+.navbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1.5px solid var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn-back:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
+}
+
+/* HERO */
+.hero {
+  background: linear-gradient(135deg, #0F172A 0%, #1a1040 100%);
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  padding: 5rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(56,189,248,0.08), transparent);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  background: rgba(56, 189, 248, 0.1);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.hero h1 span {
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--color-text-secondary);
+  max-width: 620px;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.pill {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(129, 140, 248, 0.1);
+  color: var(--color-accent-secondary);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  letter-spacing: 0.03em;
+}
+
+.pill.cyan {
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--color-accent-primary);
+  border-color: rgba(56, 189, 248, 0.2);
+}
+
+/* STAT BANNER */
+.stat-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-bg-tertiary);
+}
+
+.stat-banner-item {
+  background: var(--color-bg-secondary);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-banner-num {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.25rem;
+}
+
+.stat-banner-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.4;
+}
+
+/* MAIN CONTENT */
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* SECTION */
+.cs-section {
+  margin-bottom: 4rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--color-bg-tertiary);
+}
+
+.cs-section:last-child {
+  border-bottom: none;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  margin-bottom: 1rem;
+}
+
+.cs-section h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.cs-section p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+
+/* ABOUT CLIENT */
+.client-card {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.client-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.client-info h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.client-info p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+}
+
+/* FEATURES LIST */
+.features {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.features li {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  padding: 1rem 1.25rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  line-height: 1.7;
+  transition: border-color var(--transition);
+}
+
+.features li:hover {
+  border-color: var(--color-accent-secondary);
+}
+
+.feature-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+/* CHALLENGE BLOCKS */
+.challenge-block {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-left: 3px solid var(--color-accent-primary);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.challenge-block.warning {
+  border-left-color: #F59E0B;
+}
+
+.challenge-block.success {
+  border-left-color: #10B981;
+}
+
+.ch-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  margin-bottom: 0.5rem;
+}
+
+.challenge-block.warning .ch-label { color: #F59E0B; }
+.challenge-block.success .ch-label { color: #10B981; }
+
+.challenge-block h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.challenge-block p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  margin-bottom: 0;
+}
+
+/* TOOLS SECTION */
+.tools-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-pill);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  transition: all var(--transition);
+}
+
+.tool-item:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
+}
+
+/* OUTCOME GRID */
+.outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.outcome-item {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  transition: all var(--transition);
+}
+
+.outcome-item:hover {
+  border-color: var(--color-accent-secondary);
+  transform: translateY(-3px);
+}
+
+.outcome-num {
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+}
+
+.outcome-label {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* TESTIMONIAL */
+.testimonial {
+  background: linear-gradient(135deg, #1E293B, #1a1040);
+  border: 1px solid rgba(129, 140, 248, 0.2);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.testimonial::before {
+  content: '"';
+  position: absolute;
+  top: -20px;
+  left: 2rem;
+  font-size: 5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.testimonial-text {
+  font-size: 1.05rem;
+  color: var(--color-text-primary);
+  line-height: 1.8;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.author-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.author-title {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* CTA */
+.cta-section {
+  background: linear-gradient(135deg, #1E293B, #1a1040);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 3rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.cta-section h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.cta-section p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 36px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-primary);
+  color: #0F172A;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(56, 189, 248, 0.35);
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid var(--color-bg-tertiary);
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.footer a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .stat-banner { grid-template-columns: repeat(2, 1fr); }
+  .outcome-grid { grid-template-columns: 1fr; }
+  .hero { padding: 3rem 1.25rem 2.5rem; }
+  .content { padding: 2.5rem 1.25rem; }
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-inner { animation: fadeUp 0.7s ease both; }
+.stat-banner { animation: fadeUp 0.7s ease 0.2s both; }
+.cs-section { animation: fadeUp 0.6s ease both; }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="images/AXYTHRA_LOGO.svg" alt="Axythra" height="40" />
+      <span class="logo-text">AXYTHRA</span>
+    </a>
+    <a href="index.html" class="btn-back">← Back to Axythra</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Case Study · Workflow Automation</div>
+    <h1>Online Fitness Coach<br><span>Booking Automation</span></h1>
+    <p class="hero-desc">A fully automated client pipeline built on n8n — from form submission to CRM entry, welcome email, Notion task, and timed reminder. Zero manual work required.</p>
+    <div class="hero-tags">
+      <span class="pill cyan">n8n</span>
+      <span class="pill cyan">Tally.so</span>
+      <span class="pill cyan">Gmail API</span>
+      <span class="pill">Google Sheets</span>
+      <span class="pill">Notion API</span>
+      <span class="pill">Workflow Automation</span>
+      <span class="pill">Client Onboarding</span>
+    </div>
+
+    <!-- STAT BANNER -->
+    <div class="stat-banner">
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">0</div>
+        <div class="stat-banner-label">Manual steps after booking</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">7</div>
+        <div class="stat-banner-label">Automated actions triggered</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">24h</div>
+        <div class="stat-banner-label">Auto reminder before every call</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">100%</div>
+        <div class="stat-banner-label">Data captured without manual entry</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <!-- ABOUT CLIENT -->
+  <div class="cs-section">
+    <div class="section-label">About the Client</div>
+    <h2>A solo fitness coach scaling online — drowning in admin work.</h2>
+    <p>The client is an independent online fitness coach with a growing client base of 40–60 active members. Operating solo, they were spending roughly 3–4 hours per week on manual admin — copying form submissions into spreadsheets, writing individual confirmation emails, and setting phone reminders for upcoming calls.</p>
+    <div class="client-card">
+      <div class="client-icon">🏋️</div>
+      <div class="client-info">
+        <h3>Online Fitness Coach — Solo Operator</h3>
+        <p>40–60 active clients · 10–15 new bookings/month · Previously 100% manual intake process · Goal: fully automate client onboarding so more time is spent coaching, not admin.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="cs-section">
+    <div class="section-label">Overview</div>
+    <p>This project automates the complete client intake journey for an online fitness coach. When a prospect submits a booking form, the system instantly logs their data, sends a branded welcome email, creates a Notion prep task, and schedules a 24-hour reminder — all without the coach lifting a finger.</p>
+  </div>
+
+  <!-- PROBLEM -->
+  <div class="cs-section">
+    <div class="section-label">Problem</div>
+    <h2>Manual follow-up was costing time and first impressions.</h2>
+    <p>The coach was handling every new inquiry manually — copying client details into a spreadsheet, writing individual confirmation emails, and trying to remember to send reminders the day before each call. The process was inconsistent, time-consuming, and left too much room for human error.</p>
+    <p>The goal was simple: a client books a call, and everything else happens automatically.</p>
+  </div>
+
+  <!-- SOLUTION -->
+  <div class="cs-section">
+    <div class="section-label">Solution</div>
+    <h2>A seven-node automation pipeline, built end to end.</h2>
+    <p>The workflow was architected in n8n with a webhook trigger, data normalization layer, and parallel execution branches. Each submission flows through a structured pipeline that handles CRM updates, transactional email, task management, and time-delayed reminders in a single automated run.</p>
+    <p>The pipeline was designed to be resilient — with an error-handling branch that alerts the coach by email if any node fails, including the node name, error message, and execution ID for fast diagnosis.</p>
+  </div>
+
+  <!-- TOOLS USED -->
+  <div class="cs-section">
+    <div class="section-label">Tools Used</div>
+    <h2>Best-in-class tools, connected seamlessly.</h2>
+    <div class="tools-grid">
+      <div class="tool-item">⚡ n8n</div>
+      <div class="tool-item">📋 Tally.so</div>
+      <div class="tool-item">📧 Gmail API</div>
+      <div class="tool-item">📊 Google Sheets</div>
+      <div class="tool-item">📝 Notion API</div>
+      <div class="tool-item">🔗 Webhooks</div>
+    </div>
+  </div>
+
+  <!-- KEY FEATURES -->
+  <div class="cs-section">
+    <div class="section-label">Key Features</div>
+    <h2>Seven automated actions. One form submission.</h2>
+    <ul class="features">
+      <li><div class="feature-dot"></div>Tally.so webhook trigger captures form submissions with unlimited free responses</li>
+      <li><div class="feature-dot"></div>Data normalization node cleans and maps all client fields for downstream consistency</li>
+      <li><div class="feature-dot"></div>Google Sheets upsert — new clients are added, returning clients are updated, no duplicates</li>
+      <li><div class="feature-dot"></div>Branded HTML welcome email sent instantly via Gmail API with personalized booking details</li>
+      <li><div class="feature-dot"></div>Notion database page created automatically with client info, coaching goal, and prep notes</li>
+      <li><div class="feature-dot"></div>Wait node pauses execution and resumes exactly 24 hours before the booking to send a reminder</li>
+      <li><div class="feature-dot"></div>Error handler sends a detailed alert email to the coach if any node in the pipeline fails</li>
+    </ul>
+  </div>
+
+  <!-- CHALLENGES -->
+  <div class="cs-section">
+    <div class="section-label">Challenges & Problem-Solving</div>
+    <h2>When the obvious fix stops working, dig deeper.</h2>
+    <p>The most significant challenge wasn't technical complexity — it was a silent failure with a non-obvious root cause.</p>
+
+    <div class="challenge-block">
+      <div class="ch-label">The Issue</div>
+      <h3>No data arriving in the n8n output panel</h3>
+      <p>After configuring the Typeform trigger and submitting test entries, the n8n output remained empty. Standard debugging steps were attempted — rechecking credentials, verifying webhook URLs, reactivating the workflow. None resolved it.</p>
+    </div>
+
+    <div class="challenge-block warning">
+      <div class="ch-label">Root Cause</div>
+      <h3>Typeform's free plan had silently hit its 10-response limit</h3>
+      <p>The form had gone into read-only mode after reaching the free tier cap. Typeform does not surface an obvious error — submissions appear to go through on the form side, but no webhook fires. The workflow was never the problem. The data source was.</p>
+    </div>
+
+    <div class="challenge-block success">
+      <div class="ch-label">Resolution</div>
+      <h3>Full migration to Tally.so with workflow reconfiguration</h3>
+      <p>Rather than upgrading Typeform, the intake form was rebuilt on Tally.so — which offers unlimited responses on its free plan. The n8n trigger was replaced with a generic Webhook node. Because Tally sends form data as a structured fields array rather than flat key-value pairs, the entire Normalize node had to be rewritten to traverse the array and extract values by index.</p>
+      <p>The migration reinforced a core debugging principle: when a fix isn't working, question the layer below the layer you're debugging.</p>
+    </div>
+  </div>
+
+  <!-- OUTCOME -->
+  <div class="cs-section">
+    <div class="section-label">Outcome</div>
+    <h2>A fully hands-off client intake system, live and tested.</h2>
+    <p>From form submission to CRM entry, welcome email, Notion task, and timed reminder — every step runs automatically. The coach's only job is to show up to the call.</p>
+
+    <div class="outcome-grid">
+      <div class="outcome-item">
+        <div class="outcome-num">0</div>
+        <div class="outcome-label">Manual steps required after a booking is submitted</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">7</div>
+        <div class="outcome-label">Automated actions triggered by a single form submission</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">24h</div>
+        <div class="outcome-label">Reminder email delivered automatically before every call</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">100%</div>
+        <div class="outcome-label">Client data captured and logged without manual entry</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 1.5rem;">The system is platform-agnostic at the intake layer — swapping the form provider required only reconfiguring one node, leaving the rest of the pipeline intact. That modularity is intentional, and it is how production automations should be built.</p>
+  </div>
+
+  <!-- TESTIMONIAL -->
+  <div class="cs-section">
+    <div class="section-label">Client Feedback</div>
+    <h2>What the client said.</h2>
+    <div class="testimonial">
+      <p class="testimonial-text">Honestly, I didn't think it would make that much of a difference — but the first week after it went live I had three new bookings and I didn't do anything. They just showed up in my Notion, got their welcome emails, got their reminders. I didn't touch any of it. That's kind of wild when you think about it.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">M</div>
+        <div>
+          <div class="author-name">Marcus T.</div>
+          <div class="author-title">Online Fitness Coach · Solo Operator</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <h2>Want this built for your business?</h2>
+    <p>We build custom automation systems that eliminate manual work and let you focus on what actually matters.</p>
+    <a href="index.html#contact" class="btn-primary">Get My Free Consultation →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>Built by <a href="index.html">Axythra</a> · n8n · Tally.so · Gmail API · Google Sheets · Notion API &nbsp;·&nbsp; <a href="https://storyset.com/fun" target="_blank">Illustrations by Storyset</a></p>
+</footer>
+
+</body>
+</html>

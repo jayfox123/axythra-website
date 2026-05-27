@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — Real Estate Lead Generation Automation | Axythra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-bg-primary:    #0F172A;
+  --color-bg-secondary:  #1E293B;
+  --color-bg-tertiary:   #334155;
+  --color-accent-primary:   #38BDF8;
+  --color-accent-secondary: #818CF8;
+  --color-accent-tertiary:  #C084FC;
+  --color-text-primary:   #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted:     #475569;
+  --font-main: 'Inter', sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --transition: 0.3s cubic-bezier(0.6, 0.04, 0.12, 0.96);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { background: var(--color-bg-primary); color: var(--color-text-primary); font-family: var(--font-main); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+.navbar { position: sticky; top: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-bg-tertiary); padding: 0 2rem; }
+.navbar-inner { max-width: 1100px; margin: 0 auto; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+.navbar-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-text { font-size: 18px; font-weight: 800; letter-spacing: 0.08em; background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.btn-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: var(--radius-pill); background: transparent; border: 1.5px solid var(--color-bg-tertiary); color: var(--color-text-secondary); font-size: 13px; font-weight: 600; text-decoration: none; transition: all var(--transition); }
+.btn-back:hover { border-color: var(--color-accent-primary); color: var(--color-accent-primary); }
+.hero { background: linear-gradient(135deg, #0F172A 0%, #0d1f35 100%); border-bottom: 1px solid var(--color-bg-tertiary); padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(129,140,248,0.08), transparent); pointer-events: none; }
+.hero-inner { max-width: 900px; margin: 0 auto; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-secondary); background: rgba(129,140,248,0.1); border: 1px solid rgba(129,140,248,0.2); padding: 5px 14px; border-radius: var(--radius-pill); margin-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--color-text-primary); margin-bottom: 1.25rem; }
+.hero h1 span { background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { font-size: 1.05rem; color: var(--color-text-secondary); max-width: 620px; line-height: 1.8; margin-bottom: 2rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+.pill { font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-pill); background: rgba(129,140,248,0.1); color: var(--color-accent-secondary); border: 1px solid rgba(129,140,248,0.2); letter-spacing: 0.03em; }
+.pill.purple { background: rgba(192,132,252,0.1); color: var(--color-accent-tertiary); border-color: rgba(192,132,252,0.2); }
+.stat-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-bg-tertiary); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-bg-tertiary); }
+.stat-banner-item { background: var(--color-bg-secondary); padding: 1.5rem; text-align: center; }
+.stat-banner-num { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.25rem; }
+.stat-banner-label { font-size: 11px; color: var(--color-text-muted); font-weight: 500; letter-spacing: 0.04em; line-height: 1.4; }
+.content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+.cs-section { margin-bottom: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--color-bg-tertiary); }
+.cs-section:last-child { border-bottom: none; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-secondary); margin-bottom: 1rem; }
+.cs-section h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--color-text-primary); margin-bottom: 1.25rem; }
+.cs-section p { font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.9; margin-bottom: 1rem; }
+.client-card { background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start; margin-top: 1.5rem; }
+.client-icon { font-size: 2.5rem; flex-shrink: 0; }
+.client-info h3 { font-size: 1rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 0.5rem; }
+.client-info p { font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 0; }
+.features { list-style: none; display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+.features li { display: flex; gap: 1rem; align-items: flex-start; font-size: 0.9rem; color: var(--color-text-secondary); padding: 1rem 1.25rem; background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); line-height: 1.7; transition: border-color var(--transition); }
+.features li:hover { border-color: var(--color-accent-secondary); }
+.feature-dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #818CF8, #C084FC); margin-top: 7px; flex-shrink: 0; }
+.challenge-block { background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-left: 3px solid var(--color-accent-secondary); border-radius: var(--radius-md); padding: 1.75rem; margin-bottom: 1rem; }
+.challenge-block.warning { border-left-color: #F59E0B; }
+.challenge-block.success { border-left-color: #10B981; }
+.ch-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-secondary); margin-bottom: 0.5rem; }
+.challenge-block.warning .ch-label { color: #F59E0B; }
+.challenge-block.success .ch-label { color: #10B981; }
+.challenge-block h3 { font-size: 1rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 0.75rem; }
+.challenge-block p { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 0; }
+.tools-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.tool-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; color: var(--color-text-secondary); transition: all var(--transition); }
+.tool-item:hover { border-color: var(--color-accent-secondary); color: var(--color-accent-secondary); }
+.outcome-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.outcome-item { background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 1.5rem; transition: all var(--transition); }
+.outcome-item:hover { border-color: var(--color-accent-secondary); transform: translateY(-3px); }
+.outcome-num { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+.outcome-label { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; }
+.testimonial { background: linear-gradient(135deg, #1E293B, #1a1040); border: 1px solid rgba(129,140,248,0.2); border-radius: var(--radius-md); padding: 2.5rem; margin-top: 2rem; position: relative; }
+.testimonial::before { content: '"'; position: absolute; top: -20px; left: 2rem; font-size: 5rem; font-weight: 900; background: linear-gradient(135deg, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+.testimonial-text { font-size: 1.05rem; color: var(--color-text-primary); line-height: 1.8; font-style: italic; margin-bottom: 1.5rem; }
+.testimonial-author { display: flex; align-items: center; gap: 1rem; }
+.author-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #818CF8, #C084FC); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; color: #0F172A; }
+.author-name { font-size: 0.9rem; font-weight: 700; color: var(--color-text-primary); }
+.author-title { font-size: 0.8rem; color: var(--color-text-muted); }
+.cta-section { background: linear-gradient(135deg, #1E293B, #1a1040); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 3rem; text-align: center; margin-top: 4rem; }
+.cta-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--color-text-primary); margin-bottom: 1rem; }
+.cta-section p { font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.btn-primary { display: inline-block; padding: 14px 36px; border-radius: var(--radius-pill); background: var(--color-accent-primary); color: #0F172A; font-size: 15px; font-weight: 700; text-decoration: none; transition: all var(--transition); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.35); }
+.footer { border-top: 1px solid var(--color-bg-tertiary); padding: 2rem; text-align: center; }
+.footer p { font-size: 12px; color: var(--color-text-muted); }
+.footer a { color: var(--color-accent-primary); text-decoration: none; }
+@media (max-width: 768px) { .stat-banner { grid-template-columns: repeat(2, 1fr); } .outcome-grid { grid-template-columns: 1fr; } .hero { padding: 3rem 1.25rem 2.5rem; } .content { padding: 2.5rem 1.25rem; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-inner { animation: fadeUp 0.7s ease both; }
+.stat-banner { animation: fadeUp 0.7s ease 0.2s both; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="images/AXYTHRA_LOGO.svg" alt="Axythra" height="40" />
+      <span class="logo-text">AXYTHRA</span>
+    </a>
+    <a href="index.html" class="btn-back">← Back to Axythra</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Case Study · Lead Generation & CRM</div>
+    <h1>Real Estate Agency<br><span>Lead Generation Automation</span></h1>
+    <p class="hero-desc">A fully automated lead generation and CRM pipeline built for a Dubai-based real estate agency — from cold outreach to qualified booking, running 24/7 without a single manual step.</p>
+    <div class="hero-tags">
+      <span class="pill">GoHighLevel</span>
+      <span class="pill">Apollo.io</span>
+      <span class="pill">Zapier</span>
+      <span class="pill purple">CRM Automation</span>
+      <span class="pill purple">Lead Generation</span>
+      <span class="pill purple">Pipeline Management</span>
+    </div>
+    <div class="stat-banner">
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">3x</div>
+        <div class="stat-banner-label">More qualified leads per month</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">80%</div>
+        <div class="stat-banner-label">Reduction in manual follow-up time</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">48h</div>
+        <div class="stat-banner-label">From setup to first automated lead</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">200+</div>
+        <div class="stat-banner-label">Leads contacted per month automatically</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content">
+
+  <div class="cs-section">
+    <div class="section-label">About the Client</div>
+    <h2>A growing real estate agency spending too much time chasing leads manually.</h2>
+    <p>The client is a mid-sized real estate agency based in Dubai with a team of 6 agents. They were generating leads through referrals and manual outreach — a slow, inconsistent process that left agents spending more time on prospecting than closing deals.</p>
+    <div class="client-card">
+      <div class="client-icon">🏢</div>
+      <div class="client-info">
+        <h3>Real Estate Agency — Dubai, UAE</h3>
+        <p>6 agents · Previously manual outreach only · 20–30 leads/month before automation · Goal: build a scalable, automated lead generation system that fills the pipeline without additional headcount.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Problem</div>
+    <h2>Agents were spending 60% of their time on admin, not closing.</h2>
+    <p>Every lead required manual research, a manually written outreach email, and individual follow-up tracking in a shared spreadsheet. There was no CRM pipeline, no automated follow-up sequences, and no way to scale outreach without hiring more staff.</p>
+    <p>Leads were falling through the cracks. Follow-ups were inconsistent. The agency was leaving money on the table every single week.</p>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Solution</div>
+    <h2>A three-layer automation stack: find, contact, and nurture — automatically.</h2>
+    <p>Axythra built a full lead generation pipeline connecting Apollo.io for prospect discovery, Zapier for workflow orchestration, and GoHighLevel as the CRM and follow-up engine. The system finds qualified leads daily, enriches their data, adds them to a drip sequence, and moves them through the pipeline based on their responses — with zero manual input from the team.</p>
+    <p>Agents now only touch leads that have already expressed interest. Everything upstream is handled automatically.</p>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Tools Used</div>
+    <h2>Three powerful tools. One seamless pipeline.</h2>
+    <div class="tools-grid">
+      <div class="tool-item">🎯 Apollo.io</div>
+      <div class="tool-item">🔗 Zapier</div>
+      <div class="tool-item">🚀 GoHighLevel</div>
+      <div class="tool-item">📧 Email Sequences</div>
+      <div class="tool-item">📊 CRM Pipeline</div>
+      <div class="tool-item">🤖 AI Personalization</div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Key Features</div>
+    <h2>From prospect to pipeline — fully automated.</h2>
+    <ul class="features">
+      <li><div class="feature-dot"></div>Apollo.io scrapes and filters qualified real estate investor leads daily based on custom criteria</li>
+      <li><div class="feature-dot"></div>Zapier automatically pushes new leads into GoHighLevel CRM with full contact details</li>
+      <li><div class="feature-dot"></div>AI-personalized outreach emails sent automatically within minutes of lead entry</li>
+      <li><div class="feature-dot"></div>Multi-step follow-up sequences trigger based on open rates, clicks, and reply behavior</li>
+      <li><div class="feature-dot"></div>Leads that reply or click are automatically flagged and assigned to an agent in GHL</li>
+      <li><div class="feature-dot"></div>Pipeline stages update automatically based on lead actions — no manual CRM updates needed</li>
+      <li><div class="feature-dot"></div>Weekly performance report sent automatically to the agency owner every Monday morning</li>
+    </ul>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Challenges & Problem-Solving</div>
+    <h2>Personalization at scale — without it feeling robotic.</h2>
+
+    <div class="challenge-block">
+      <div class="ch-label">The Challenge</div>
+      <h3>Generic outreach emails had extremely low reply rates</h3>
+      <p>Initial test sequences using templated emails achieved less than 2% reply rates. Leads could tell the emails were automated. The system was working technically, but not converting.</p>
+    </div>
+
+    <div class="challenge-block warning">
+      <div class="ch-label">Root Cause</div>
+      <h3>No personalization layer in the outreach copy</h3>
+      <p>Every lead was receiving the exact same email with only their first name swapped. For high-value real estate prospects, this level of personalization wasn't enough to stand out in a crowded inbox.</p>
+    </div>
+
+    <div class="challenge-block success">
+      <div class="ch-label">Resolution</div>
+      <h3>AI-powered personalization node added to the Zapier workflow</h3>
+      <p>An AI step was added to the Zapier workflow that pulls the lead's company, recent activity, and location from Apollo, then generates a personalized opening line for each email. Reply rates increased from under 2% to over 8% within two weeks of the change.</p>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Outcome</div>
+    <h2>A predictable, scalable lead machine — running 24/7.</h2>
+    <p>The agency went from 20–30 manual leads per month to 200+ automated contacts per month, with agents only spending time on leads that had already shown interest. Pipeline revenue increased significantly in the first quarter after launch.</p>
+
+    <div class="outcome-grid">
+      <div class="outcome-item">
+        <div class="outcome-num">3x</div>
+        <div class="outcome-label">More qualified leads entering the pipeline every month</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">80%</div>
+        <div class="outcome-label">Reduction in time agents spend on prospecting tasks</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">8%+</div>
+        <div class="outcome-label">Reply rate after AI personalization was added</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">200+</div>
+        <div class="outcome-label">Leads automatically contacted every single month</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Client Feedback</div>
+    <h2>What the client said.</h2>
+    <div class="testimonial">
+      <p class="testimonial-text">Before this, my agents were spending half their day just finding and emailing people. Now they wake up and there are already interested leads waiting in GHL. It's a completely different operation. I wish we had done this two years ago honestly.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">S</div>
+        <div>
+          <div class="author-name">Sarah K.</div>
+          <div class="author-title">Agency Director · Real Estate · Dubai, UAE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Want this built for your business?</h2>
+    <p>We build custom automation systems that eliminate manual work and let you focus on what actually matters.</p>
+    <a href="index.html#contact" class="btn-primary">Get My Free Consultation →</a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>Built by <a href="index.html">Axythra</a> · GoHighLevel · Apollo.io · Zapier &nbsp;·&nbsp; <a href="https://storyset.com/fun" target="_blank">Illustrations by Storyset</a></p>
+</footer>
+
+</body>
+</html>

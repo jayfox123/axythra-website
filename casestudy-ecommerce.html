@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Study — E-Commerce AI Chatbot Automation | Axythra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-bg-primary:    #0F172A;
+  --color-bg-secondary:  #1E293B;
+  --color-bg-tertiary:   #334155;
+  --color-accent-primary:   #38BDF8;
+  --color-accent-secondary: #818CF8;
+  --color-accent-tertiary:  #C084FC;
+  --color-text-primary:   #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted:     #475569;
+  --font-main: 'Inter', sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --transition: 0.3s cubic-bezier(0.6, 0.04, 0.12, 0.96);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { background: var(--color-bg-primary); color: var(--color-text-primary); font-family: var(--font-main); font-size: 16px; line-height: 1.75; -webkit-font-smoothing: antialiased; }
+.navbar { position: sticky; top: 0; z-index: 100; background: rgba(15,23,42,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-bg-tertiary); padding: 0 2rem; }
+.navbar-inner { max-width: 1100px; margin: 0 auto; height: 68px; display: flex; align-items: center; justify-content: space-between; }
+.navbar-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-text { font-size: 18px; font-weight: 800; letter-spacing: 0.08em; background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.btn-back { display: inline-flex; align-items: center; gap: 8px; padding: 8px 20px; border-radius: var(--radius-pill); background: transparent; border: 1.5px solid var(--color-bg-tertiary); color: var(--color-text-secondary); font-size: 13px; font-weight: 600; text-decoration: none; transition: all var(--transition); }
+.btn-back:hover { border-color: var(--color-accent-primary); color: var(--color-accent-primary); }
+.hero { background: linear-gradient(135deg, #0F172A 0%, #1a0d30 100%); border-bottom: 1px solid var(--color-bg-tertiary); padding: 5rem 2rem 4rem; position: relative; overflow: hidden; }
+.hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(192,132,252,0.08), transparent); pointer-events: none; }
+.hero-inner { max-width: 900px; margin: 0 auto; }
+.hero-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-accent-tertiary); background: rgba(192,132,252,0.1); border: 1px solid rgba(192,132,252,0.2); padding: 5px 14px; border-radius: var(--radius-pill); margin-bottom: 1.5rem; }
+.hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.1; letter-spacing: -0.03em; color: var(--color-text-primary); margin-bottom: 1.25rem; }
+.hero h1 span { background: linear-gradient(135deg, #C084FC, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-desc { font-size: 1.05rem; color: var(--color-text-secondary); max-width: 620px; line-height: 1.8; margin-bottom: 2rem; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 3rem; }
+.pill { font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: var(--radius-pill); background: rgba(192,132,252,0.1); color: var(--color-accent-tertiary); border: 1px solid rgba(192,132,252,0.2); letter-spacing: 0.03em; }
+.pill.indigo { background: rgba(129,140,248,0.1); color: var(--color-accent-secondary); border-color: rgba(129,140,248,0.2); }
+.stat-banner { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--color-bg-tertiary); border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--color-bg-tertiary); }
+.stat-banner-item { background: var(--color-bg-secondary); padding: 1.5rem; text-align: center; }
+.stat-banner-num { font-size: 2rem; font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #C084FC, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.25rem; }
+.stat-banner-label { font-size: 11px; color: var(--color-text-muted); font-weight: 500; letter-spacing: 0.04em; line-height: 1.4; }
+.content { max-width: 900px; margin: 0 auto; padding: 4rem 2rem; }
+.cs-section { margin-bottom: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--color-bg-tertiary); }
+.cs-section:last-child { border-bottom: none; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-tertiary); margin-bottom: 1rem; }
+.cs-section h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; line-height: 1.2; letter-spacing: -0.02em; color: var(--color-text-primary); margin-bottom: 1.25rem; }
+.cs-section p { font-size: 0.95rem; color: var(--color-text-secondary); line-height: 1.9; margin-bottom: 1rem; }
+.client-card { background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 2rem; display: flex; gap: 1.5rem; align-items: flex-start; margin-top: 1.5rem; }
+.client-icon { font-size: 2.5rem; flex-shrink: 0; }
+.client-info h3 { font-size: 1rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 0.5rem; }
+.client-info p { font-size: 0.875rem; color: var(--color-text-secondary); margin-bottom: 0; }
+.features { list-style: none; display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+.features li { display: flex; gap: 1rem; align-items: flex-start; font-size: 0.9rem; color: var(--color-text-secondary); padding: 1rem 1.25rem; background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); line-height: 1.7; transition: border-color var(--transition); }
+.features li:hover { border-color: var(--color-accent-tertiary); }
+.feature-dot { width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #C084FC, #818CF8); margin-top: 7px; flex-shrink: 0; }
+.challenge-block { background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-left: 3px solid var(--color-accent-tertiary); border-radius: var(--radius-md); padding: 1.75rem; margin-bottom: 1rem; }
+.challenge-block.warning { border-left-color: #F59E0B; }
+.challenge-block.success { border-left-color: #10B981; }
+.ch-label { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent-tertiary); margin-bottom: 0.5rem; }
+.challenge-block.warning .ch-label { color: #F59E0B; }
+.challenge-block.success .ch-label { color: #10B981; }
+.challenge-block h3 { font-size: 1rem; font-weight: 700; color: var(--color-text-primary); margin-bottom: 0.75rem; }
+.challenge-block p { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.8; margin-bottom: 0; }
+.tools-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.5rem; }
+.tool-item { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1rem; background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-pill); font-size: 13px; font-weight: 600; color: var(--color-text-secondary); transition: all var(--transition); }
+.tool-item:hover { border-color: var(--color-accent-tertiary); color: var(--color-accent-tertiary); }
+.outcome-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.5rem; }
+.outcome-item { background: var(--color-bg-secondary); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 1.5rem; transition: all var(--transition); }
+.outcome-item:hover { border-color: var(--color-accent-tertiary); transform: translateY(-3px); }
+.outcome-num { font-size: 2.5rem; font-weight: 900; letter-spacing: -0.03em; background: linear-gradient(135deg, #C084FC, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.5rem; }
+.outcome-label { font-size: 0.85rem; color: var(--color-text-muted); line-height: 1.5; }
+.testimonial { background: linear-gradient(135deg, #1E293B, #1a0d30); border: 1px solid rgba(192,132,252,0.2); border-radius: var(--radius-md); padding: 2.5rem; margin-top: 2rem; position: relative; }
+.testimonial::before { content: '"'; position: absolute; top: -20px; left: 2rem; font-size: 5rem; font-weight: 900; background: linear-gradient(135deg, #C084FC, #818CF8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+.testimonial-text { font-size: 1.05rem; color: var(--color-text-primary); line-height: 1.8; font-style: italic; margin-bottom: 1.5rem; }
+.testimonial-author { display: flex; align-items: center; gap: 1rem; }
+.author-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, #C084FC, #818CF8); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: 700; color: #0F172A; }
+.author-name { font-size: 0.9rem; font-weight: 700; color: var(--color-text-primary); }
+.author-title { font-size: 0.8rem; color: var(--color-text-muted); }
+.cta-section { background: linear-gradient(135deg, #1E293B, #1a0d30); border: 1px solid var(--color-bg-tertiary); border-radius: var(--radius-md); padding: 3rem; text-align: center; margin-top: 4rem; }
+.cta-section h2 { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; color: var(--color-text-primary); margin-bottom: 1rem; }
+.cta-section p { font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 2rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+.btn-primary { display: inline-block; padding: 14px 36px; border-radius: var(--radius-pill); background: var(--color-accent-primary); color: #0F172A; font-size: 15px; font-weight: 700; text-decoration: none; transition: all var(--transition); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(56,189,248,0.35); }
+.footer { border-top: 1px solid var(--color-bg-tertiary); padding: 2rem; text-align: center; }
+.footer p { font-size: 12px; color: var(--color-text-muted); }
+.footer a { color: var(--color-accent-primary); text-decoration: none; }
+@media (max-width: 768px) { .stat-banner { grid-template-columns: repeat(2, 1fr); } .outcome-grid { grid-template-columns: 1fr; } .hero { padding: 3rem 1.25rem 2.5rem; } .content { padding: 2.5rem 1.25rem; } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-inner { animation: fadeUp 0.7s ease both; }
+.stat-banner { animation: fadeUp 0.7s ease 0.2s both; }
+</style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="images/AXYTHRA_LOGO.svg" alt="Axythra" height="40" />
+      <span class="logo-text">AXYTHRA</span>
+    </a>
+    <a href="index.html" class="btn-back">← Back to Axythra</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Case Study · AI Chatbot & Support Automation</div>
+    <h1>E-Commerce Brand<br><span>AI Customer Support Automation</span></h1>
+    <p class="hero-desc">A custom AI chatbot trained on product data, handling 800+ daily customer queries — order tracking, FAQs, returns, and live handoffs — with zero human intervention on routine requests.</p>
+    <div class="hero-tags">
+      <span class="pill">OpenAI GPT-4</span>
+      <span class="pill">Voiceflow</span>
+      <span class="pill">Zapier</span>
+      <span class="pill indigo">AI Chatbot</span>
+      <span class="pill indigo">Customer Support</span>
+      <span class="pill indigo">E-Commerce Automation</span>
+    </div>
+    <div class="stat-banner">
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">800+</div>
+        <div class="stat-banner-label">Daily queries handled automatically</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">60%</div>
+        <div class="stat-banner-label">Reduction in support costs</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">24/7</div>
+        <div class="stat-banner-label">Always-on support with no downtime</div>
+      </div>
+      <div class="stat-banner-item">
+        <div class="stat-banner-num">92%</div>
+        <div class="stat-banner-label">Customer satisfaction score</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="content">
+
+  <div class="cs-section">
+    <div class="section-label">About the Client</div>
+    <h2>A fast-growing e-commerce brand overwhelmed by customer support volume.</h2>
+    <p>The client runs a direct-to-consumer e-commerce brand selling fitness supplements online. With a growing customer base of 15,000+ active buyers, their 3-person support team was handling 600–800 tickets per day — mostly repetitive questions about order status, shipping times, and returns policy.</p>
+    <div class="client-card">
+      <div class="client-icon">🛍️</div>
+      <div class="client-info">
+        <h3>D2C E-Commerce Brand — Fitness Supplements</h3>
+        <p>15,000+ active customers · 600–800 daily support tickets · 3-person support team at capacity · Goal: automate routine queries so the human team can focus on complex, high-value customer interactions.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Problem</div>
+    <h2>A 3-person team drowning in 800 tickets a day — mostly the same questions.</h2>
+    <p>Over 70% of support tickets were variations of the same four questions: "Where is my order?", "What's your return policy?", "Can I change my address?", and "Do you ship internationally?". The team was spending the majority of their day copy-pasting the same answers instead of handling genuine edge cases.</p>
+    <p>Response times were slipping. Customer satisfaction was dropping. And hiring more agents wasn't a scalable solution.</p>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Solution</div>
+    <h2>A GPT-4 powered chatbot trained on every product, policy, and FAQ.</h2>
+    <p>Axythra built a custom AI chatbot using Voiceflow as the conversation design layer and GPT-4 as the intelligence engine. The bot was trained on the brand's full product catalog, shipping policies, return procedures, and common support scenarios. It integrates directly with the order management system to pull real-time order status for any customer.</p>
+    <p>For edge cases the AI can't confidently handle, it performs a clean handoff to a human agent with the full conversation context — so agents never have to ask a customer to repeat themselves.</p>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Tools Used</div>
+    <h2>AI-powered, seamlessly integrated.</h2>
+    <div class="tools-grid">
+      <div class="tool-item">🤖 OpenAI GPT-4</div>
+      <div class="tool-item">🎨 Voiceflow</div>
+      <div class="tool-item">🔗 Zapier</div>
+      <div class="tool-item">📦 Order Management API</div>
+      <div class="tool-item">💬 Live Chat Handoff</div>
+      <div class="tool-item">📊 Analytics Dashboard</div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Key Features</div>
+    <h2>Smart enough to handle it. Honest enough to know when it can't.</h2>
+    <ul class="features">
+      <li><div class="feature-dot"></div>GPT-4 trained on full product catalog, FAQs, shipping policies, and return procedures</li>
+      <li><div class="feature-dot"></div>Real-time order status lookup — customers get live tracking without contacting a human</li>
+      <li><div class="feature-dot"></div>Return initiation flow — customers can start a return entirely within the chat interface</li>
+      <li><div class="feature-dot"></div>Address change requests automatically routed to fulfillment team via Zapier webhook</li>
+      <li><div class="feature-dot"></div>Intelligent escalation — the bot detects frustration signals and escalates to a human agent</li>
+      <li><div class="feature-dot"></div>Full conversation context passed to human agent on handoff — no repeated questions</li>
+      <li><div class="feature-dot"></div>Weekly analytics report showing top query categories, resolution rates, and escalation trends</li>
+    </ul>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Challenges & Problem-Solving</div>
+    <h2>Getting the AI to know when it doesn't know.</h2>
+
+    <div class="challenge-block">
+      <div class="ch-label">The Challenge</div>
+      <h3>The chatbot was confidently giving wrong answers</h3>
+      <p>Early testing revealed the bot would sometimes hallucinate policy details or give outdated product information when asked questions outside its training scope. This was creating more frustration than the manual support it was replacing.</p>
+    </div>
+
+    <div class="challenge-block warning">
+      <div class="ch-label">Root Cause</div>
+      <h3>No confidence threshold or uncertainty detection in place</h3>
+      <p>The initial prompt engineering didn't include explicit instructions for the model to express uncertainty or escalate when confidence was low. GPT-4 defaults to generating fluent, confident-sounding responses even when the answer is uncertain.</p>
+    </div>
+
+    <div class="challenge-block success">
+      <div class="ch-label">Resolution</div>
+      <h3>Uncertainty detection layer and strict knowledge boundary prompting</h3>
+      <p>The system prompt was restructured with explicit knowledge boundaries — the bot was instructed to only answer from its provided knowledge base and to escalate immediately if a query fell outside that scope. A confidence-detection layer was added to the Voiceflow flow that catches low-certainty responses before they reach the customer. Wrong answer rate dropped to under 1% after the fix.</p>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Outcome</div>
+    <h2>800+ queries handled daily. Support team finally breathing again.</h2>
+    <p>The chatbot now handles over 85% of incoming support queries automatically. The human team handles only genuine edge cases, complex complaints, and relationship-building interactions. Response times dropped from 6–8 hours to under 2 minutes for all routine queries.</p>
+
+    <div class="outcome-grid">
+      <div class="outcome-item">
+        <div class="outcome-num">800+</div>
+        <div class="outcome-label">Daily queries resolved automatically without human input</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">60%</div>
+        <div class="outcome-label">Reduction in total customer support operating costs</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">2min</div>
+        <div class="outcome-label">Average response time — down from 6–8 hours</div>
+      </div>
+      <div class="outcome-item">
+        <div class="outcome-num">92%</div>
+        <div class="outcome-label">Customer satisfaction score post-implementation</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cs-section">
+    <div class="section-label">Client Feedback</div>
+    <h2>What the client said.</h2>
+    <div class="testimonial">
+      <p class="testimonial-text">Our support team used to start every morning already behind. Now they come in and the chatbot has already handled the overnight queue. They're actually doing real support work now — the stuff that actually matters. The ROI on this was obvious within the first month.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">J</div>
+        <div>
+          <div class="author-name">Jamie R.</div>
+          <div class="author-title">Head of Operations · D2C E-Commerce Brand</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <h2>Want this built for your business?</h2>
+    <p>We build custom automation systems that eliminate manual work and let you focus on what actually matters.</p>
+    <a href="index.html#contact" class="btn-primary">Get My Free Consultation →</a>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <p>Built by <a href="index.html">Axythra</a> · OpenAI GPT-4 · Voiceflow · Zapier &nbsp;·&nbsp; <a href="https://storyset.com/fun" target="_blank">Illustrations by Storyset</a></p>
+</footer>
+
+</body>
+</html>
