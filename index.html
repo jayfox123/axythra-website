@@ -52,6 +52,7 @@
   <link rel="stylesheet" href="sections/partners.css" />
   <link rel="stylesheet" href="sections/contact.css" />
   <link rel="stylesheet" href="sections/footer.css" />
+  <link rel="stylesheet" href="sections/blog.css" />
   <link rel="stylesheet" href="sections/polish.css" />
   <link rel="stylesheet" href="sections/ourcasestudies.css" />
   <link rel="stylesheet" href="css/chatbot.css" />
@@ -76,14 +77,18 @@
     "https://www.linkedin.com/in/jayorog-ai-automation/",
     "https://github.com/jayfox123"
   ],
-  "serviceType": [
-    "AI Automation",
-    "Workflow Automation",
-    "CRM Integration",
-    "Lead Generation",
-    "AI Chatbot",
-    "Website Development"
-  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "AI Automation Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Automation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Workflow Automation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "CRM Integration"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Lead Generation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI Chatbot"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Website Development"}}
+    ]
+  },
   "areaServed": "Worldwide",
   "priceRange": "$$"
 }
@@ -117,6 +122,7 @@
           <a href="#services">Services</a>
           <a href="#work">Our Work</a>
           <a href="#partners">Partners</a>
+          <a href="blog.html">Blog</a>
           <a href="#contact">Contact</a>
           <a href="ainews.html" class="nav-news-link">🤖 AI News</a>
         </nav>
@@ -142,6 +148,7 @@
       <a href="#services">Services</a>
       <a href="#work">Our Work</a>
       <a href="#partners">Partners</a>
+      <a href="blog.html">Blog</a>
       <a href="#contact">Contact</a>
     </nav>
   </div>
@@ -622,7 +629,88 @@
   </div>
 
 </section>
+  <!-- ========== BLOG ========== -->
+<section class="blog" id="blog">
 
+  <div class="container">
+
+    <div class="blog-header">
+      <div class="section-tag">Insights & Automation Tips</div>
+      <div class="blog-header-top">
+        <h2 class="blog-heading">
+          Learn how to make your business <span class="gradient-text">run smarter.</span>
+        </h2>
+        <a href="blog.html" class="btn-secondary">View All Posts →</a>
+      </div>
+    </div>
+
+    <div class="blog-grid">
+
+      <!-- Featured Post -->
+      <div class="blog-featured fade-in">
+        <a href="blog-n8n-automation.html" class="blog-card-link">
+          <div class="blog-img blog-img-featured" style="background: linear-gradient(135deg, #0F172A 0%, #1a1040 100%);">
+            <div class="blog-img-content">
+              <span class="blog-img-icon">⚡</span>
+            </div>
+          </div>
+          <div class="blog-card-body">
+            <span class="blog-tag">Automation</span>
+            <h3 class="blog-title-featured">How to Automate Your Business with n8n — A Complete Guide</h3>
+            <p class="blog-excerpt">Most businesses are drowning in repetitive tasks. Here's how n8n can eliminate them all — step by step.</p>
+            <div class="blog-meta">
+              <span>May 28, 2026</span>
+              <span>·</span>
+              <span>8 min read</span>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <!-- Sidebar Posts -->
+      <div class="blog-sidebar">
+
+        <div class="blog-card-sm fade-in">
+          <a href="blog-zapier-vs-make-vs-n8n.html" class="blog-card-link">
+            <div class="blog-img blog-img-sm" style="background: linear-gradient(135deg, #0F172A 0%, #0d2040 100%);">
+              <span class="blog-img-icon">🔗</span>
+            </div>
+            <div class="blog-card-body">
+              <span class="blog-tag blog-tag-green">Comparison</span>
+              <h3 class="blog-title-sm">Zapier vs Make vs n8n — Which Automation Tool is Best in 2026?</h3>
+              <div class="blog-meta">
+                <span>May 25, 2026</span>
+                <span>·</span>
+                <span>6 min read</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="blog-card-sm fade-in">
+          <a href="blog-signs-you-need-automation.html" class="blog-card-link">
+            <div class="blog-img blog-img-sm" style="background: linear-gradient(135deg, #0F172A 0%, #1a0d30 100%);">
+              <span class="blog-img-icon">🎯</span>
+            </div>
+            <div class="blog-card-body">
+              <span class="blog-tag blog-tag-pink">Business</span>
+              <h3 class="blog-title-sm">5 Signs Your Business Desperately Needs Automation</h3>
+              <div class="blog-meta">
+                <span>May 22, 2026</span>
+                <span>·</span>
+                <span>5 min read</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
   <!-- ========== CONTACT ========== -->
 <section class="contact" id="contact">
 
