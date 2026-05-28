@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI News Radar — Latest AI Updates | Axythra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-bg-primary:    #0F172A;
+  --color-bg-secondary:  #1E293B;
+  --color-bg-tertiary:   #334155;
+  --color-accent-primary:   #38BDF8;
+  --color-accent-secondary: #818CF8;
+  --color-accent-tertiary:  #C084FC;
+  --color-text-primary:   #F8FAFC;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted:     #475569;
+  --font-main: 'Inter', sans-serif;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-pill: 999px;
+  --transition: 0.3s cubic-bezier(0.6, 0.04, 0.12, 0.96);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-main);
+  font-size: 16px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAVBAR */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15,23,42,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  padding: 0 2rem;
+}
+
+.navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  border: 1.5px solid var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition);
+}
+
+.btn-back:hover {
+  border-color: var(--color-accent-primary);
+  color: var(--color-accent-primary);
+}
+
+/* HERO */
+.news-hero {
+  background: linear-gradient(135deg, #0F172A 0%, #1a1040 100%);
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  padding: 4rem 2rem 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(56,189,248,0.06), transparent);
+  pointer-events: none;
+}
+
+.news-hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+  background: rgba(56,189,248,0.1);
+  border: 1px solid rgba(56,189,248,0.2);
+  padding: 5px 14px;
+  border-radius: var(--radius-pill);
+  margin-bottom: 1.25rem;
+}
+
+.radar-live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.news-hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  margin-bottom: 1rem;
+}
+
+.news-hero h1 span {
+  background: linear-gradient(135deg, #38BDF8, #818CF8, #C084FC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.news-hero p {
+  font-size: 1rem;
+  color: var(--color-text-secondary);
+  max-width: 560px;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* SOURCES STRIP */
+.sources-strip {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.source-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+}
+
+.source-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+/* STATS BAR */
+.stats-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #38BDF8, #818CF8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 36px;
+  background: var(--color-bg-tertiary);
+}
+
+/* MAIN CONTENT */
+.news-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* SECTION HEADER */
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.section-title {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-accent-primary);
+}
+
+.update-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--color-text-muted);
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+/* WIDGET WRAPPER */
+.widget-wrapper {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+/* CTA SECTION */
+.cta-strip {
+  background: linear-gradient(135deg, #1E293B, #1a1040);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+}
+
+.cta-strip h2 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--color-text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.cta-strip p {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  max-width: 480px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+  background: var(--color-accent-primary);
+  color: #0F172A;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(56,189,248,0.35);
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid var(--color-bg-tertiary);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.footer p {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.footer a {
+  color: var(--color-accent-primary);
+  text-decoration: none;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.news-hero-inner { animation: fadeUp 0.7s ease both; }
+
+@media (max-width: 768px) {
+  .news-hero { padding: 3rem 1.25rem 2rem; }
+  .news-content { padding: 2rem 1.25rem; }
+  .stats-bar { padding: 1.25rem; gap: 1rem; }
+  .cta-strip { flex-direction: column; text-align: center; }
+  .stat-divider { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="images/AXYTHRA_LOGO.svg" alt="Axythra" height="40" />
+    </a>
+    <a href="index.html" class="btn-back">← Back to Axythra</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="news-hero">
+  <div class="news-hero-inner">
+    <div class="news-tag">
+      <div class="radar-live-dot"></div>
+      Live Feed · Updated Daily
+    </div>
+    <h1>AI News <span>Radar</span></h1>
+    <p>The latest releases, updates, and breakthroughs in AI — curated from the top sources and updated every 24 hours. Stay ahead of what's happening in the space.</p>
+
+    <div class="sources-strip">
+      <span style="font-size: 12px; color: var(--color-text-muted); font-weight: 500;">Sources:</span>
+      <div class="source-pill"><div class="source-dot" style="background:#10B981;"></div>OpenAI</div>
+      <div class="source-pill"><div class="source-dot" style="background:#38BDF8;"></div>Anthropic</div>
+      <div class="source-pill"><div class="source-dot" style="background:#818CF8;"></div>Google AI</div>
+      <div class="source-pill"><div class="source-dot" style="background:#C084FC;"></div>AI Model Releases</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-num">4</span>
+    <span class="stat-label">Live Sources</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">24h</span>
+    <span class="stat-label">Update Frequency</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">AI Focused</span>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item">
+    <span class="stat-num">Auto</span>
+    <span class="stat-label">Curated Daily</span>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="news-content">
+
+  <div class="section-header">
+    <span class="section-title">Latest AI Updates</span>
+    <div class="update-badge">
+      <div class="radar-live-dot"></div>
+      Auto-updated daily
+    </div>
+  </div>
+
+  <!-- RSS WIDGET -->
+  <div class="widget-wrapper">
+    <rssapp-list id="_EbIuYUgDKsITVgmx"></rssapp-list>
+    <script src="https://widget.rss.app/v1/list.js" type="text/javascript" async></script>
+  </div>
+
+  <!-- CTA STRIP -->
+  <div class="cta-strip">
+    <div>
+      <h2>Want AI working for your business?</h2>
+      <p>While you're reading about AI — we can be building it for you. Custom automation systems that run your business on autopilot.</p>
+    </div>
+    <a href="index.html#contact" class="btn-primary">Get My Free Consultation →</a>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2026 <a href="index.html">Axythra</a> · AI News powered by <a href="https://rss.app" target="_blank">RSS.app</a> · <a href="https://storyset.com/fun" target="_blank">Illustrations by Storyset</a></p>
+</footer>
+
+</body>
+</html>

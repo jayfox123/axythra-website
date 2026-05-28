@@ -328,3 +328,78 @@
 .tool-logo:hover {
   opacity: 1;
 }
+
+.ai-news-radar {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+}
+
+.radar-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-bg-tertiary);
+}
+
+.radar-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10B981;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.radar-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-bg-tertiary);
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+
+.radar-badge {
+  font-size: 10px;
+  color: var(--color-text-muted);
+  background: var(--color-bg-primary);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-bg-tertiary);
+}
+
+@media (max-width: 1024px) {
+  .ai-news-radar { display: none; }
+  .container.hero-container {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+rssapp-list {
+  --rssapp-background-color: transparent !important;
+  --rssapp-font-color: #F8FAFC !important;
+}
+
+rssapp-list img,
+rssapp-list .rssapp-item-image,
+rssapp-list .rssapp-item-thumbnail {
+  display: none !important;
+}
+
+rssapp-list .rssapp-item-title {
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: unset !important;
+}
+
+rssapp-list .rssapp-header {
+  display: none !important;
+}
