@@ -149,7 +149,7 @@
       position: absolute;
       top: -100px;
       right: -100px;
-      width: 400px;
+      width: 400px;<div class="post-hero-inner">
       height: 400px;
       background: radial-gradient(circle, rgba(56,189,248,0.08), transparent);
       pointer-events: none;
@@ -562,14 +562,16 @@
     <div class="navbar-inner">
       <a href="index.html" class="navbar-logo">
         <img src="images/AXYTHRA_LOGO.svg" alt="Axythra" />
-        <span class="logo-text">AXYTHRA</span>
       </a>
       <a href="blog.html" class="nav-back">← Back to Blog</a>
     </div>
   </nav>
 
   <!-- Hero -->
-  <div class="post-hero">
+  <div class="post-hero" style="position: relative;">
+    <div style="position: absolute; inset: 0; overflow: hidden; z-index: 1;">
+      <img src="images/blog-img-n8n.png" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.12;" />
+    </div>
     <div class="post-hero-inner">
       <div class="post-tag">⚡ Automation</div>
       <h1 class="post-title">
