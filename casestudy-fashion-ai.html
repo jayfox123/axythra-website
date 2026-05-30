@@ -108,6 +108,8 @@ body { background: var(--color-bg-primary); color: var(--color-text-primary); fo
 .message.user .message-bubble { background-color: #1a1a1a; color: #ffffff; border-bottom-right-radius: 4px; }
 .message.agent .message-bubble { background-color: #ffffff; color: #1a1a1a; border: 1px solid #e8e0d5; border-bottom-left-radius: 4px; }
 .message-sender { font-size: 11px; color: #999; margin-bottom: 4px; letter-spacing: 0.5px; font-family: 'Inter', sans-serif; }
+.voice-btn { margin-top: 6px; padding: 4px 12px; background: transparent; border: 1px solid #c9a96e; color: #c9a96e; border-radius: 20px; font-size: 11px; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s; }
+.voice-btn:hover { background: #c9a96e; color: #fff; }
 .input-area { display: flex; padding: 16px; background: #ffffff; border-top: 1px solid #f0e8e0; gap: 10px; align-items: center; }
 .chat-input { flex: 1; padding: 12px 16px; border: 1px solid #e0d8d0; border-radius: 24px; font-size: 14px; font-family: 'Georgia', serif; outline: none; background: #fafafa; }
 .chat-input:focus { border-color: #c9a96e; }
@@ -223,7 +225,8 @@ body { background: var(--color-bg-primary); color: var(--color-text-primary); fo
       <div class="tool-item">🐍 Python</div>
       <div class="tool-item">⚡ FastAPI</div>
       <div class="tool-item">🔗 LangGraph</div>
-      <div class="tool-item">☁️ Render</div>
+      <div class="tool-item">☁️ Railway</div>
+      <div class="tool-item">🎙️ ElevenLabs</div>
       <div class="tool-item">🎨 HTML/CSS/JS</div>
       <div class="tool-item">📦 JSON Data Store</div>
       <div class="tool-item">🔀 Multi-Agent Routing</div>
@@ -306,8 +309,33 @@ function appendMessage(sender, message, agentName = null) {
   bubble.textContent = message;
   messageDiv.appendChild(senderLabel);
   messageDiv.appendChild(bubble);
+
+  if (sender !== 'You') {
+    const voiceBtn = document.createElement('button');
+    voiceBtn.classList.add('voice-btn');
+    voiceBtn.textContent = '🔊 Listen';
+    voiceBtn.onclick = () => playVoice(message);
+    messageDiv.appendChild(voiceBtn);
+  }
+
   messagesDiv.appendChild(messageDiv);
   chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+async function playVoice(text) {
+  try {
+    const response = await fetch('https://fashion-support-ai-production.up.railway.app/api/voice', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text: text })
+    });
+    const audioBlob = await response.blob();
+    const audioUrl = URL.createObjectURL(audioBlob);
+    const audio = new Audio(audioUrl);
+    audio.play();
+  } catch (error) {
+    console.error('Voice error:', error);
+  }
 }
 
 async function sendMessage() {
@@ -319,7 +347,7 @@ async function sendMessage() {
   agentIndicator.textContent = '● TYPING...';
 
   try {
-    const response = await fetch('https://fashion-support-ai.onrender.com/api/chat', {
+    const response = await fetch('https://fashion-support-ai-production.up.railway.app/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
