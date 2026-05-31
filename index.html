@@ -778,65 +778,22 @@
       </div>
     </div>
 
-    <!-- Right: Form -->
-    <div class="contact-right">
-      <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="3b9121c4-ae42-45e0-8319-f970513306b9" />
-        <input type="hidden" name="subject" value="New Inquiry from Axythra Website" />
-        <input type="hidden" name="redirect" value="https://axythra.tech" />
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="firstName">First Name</label>
-            <input type="text" id="firstName" name="firstName" placeholder="John" required />
-          </div>
-          <div class="form-group">
-            <label for="lastName">Last Name</label>
-            <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" placeholder="john@company.com" required />
-        </div>
-
-        <div class="form-group">
-          <label for="company">Company Name</label>
-          <input type="text" id="company" name="company" placeholder="Your Company" />
-        </div>
-
-        <div class="form-group">
-          <label for="service">Service Interested In</label>
-          <select id="service" name="service">
-            <option value="">Select a service...</option>
-            <option value="n8n">n8n AI Automation Workflow</option>
-            <option value="zapier">Zapier AI Automation Workflow</option>
-            <option value="make">Make AI Automation Workflow</option>
-            <option value="ghl">GoHighLevel Pipeline Automation</option>
-            <option value="leads">Lead Generation</option>
-            <option value="crm">CRM Integration</option>
-            <option value="funnel">Building Funnel Landing Page</option>
-            <option value="chatbot">AI Chatbot to Website</option>
-            <option value="website">Building Website</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="message">Tell Us About Your Business</label>
-          <textarea id="message" name="message" rows="4" placeholder="Describe your current workflow and what you'd like to automate..."></textarea>
-        </div>
-
-        <button type="submit" class="btn-submit">
-          Send Message →
-        </button>
-
-        <p class="form-note">🔒 Your information is never shared. We'll respond within 24 hours.</p>
-
-      </form>
+    <!-- Right: Tally Form Embed -->
+  <div class="contact-right">
+  <iframe
+    data-tally-src="https://tally.so/embed/obkVLe?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+    loading="lazy"
+    width="100%"
+    height="500"
+    frameborder="0"
+    marginheight="0"
+    marginwidth="0"
+    title="Axythra Inquiry Form">
+  </iframe>
+    </div>
     </div>
 
-  </div>
+    </div>
 
 </section>
 
@@ -923,5 +880,7 @@
   <script>window.chatbaseConfig = { chatbotId: "CPeWm7ZsTTHfo0GeG3vjx" }</script>
   <script src="https://www.chatbase.co/embed.min.js" id="CPeWm7ZsTTHfo0GeG3vjx" defer></script>
   <script src="js/chatbot.js"></script>
+  <script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
+</script>
 </body>
 </html>
